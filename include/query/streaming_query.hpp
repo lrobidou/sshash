@@ -58,6 +58,12 @@ streaming_query_report streaming_query_from_fasta_file(dictionary const* dict, s
             auto answer = query.lookup_advanced(kmer);
             report.num_kmers += 1;
             report.num_positive_kmers += answer.kmer_id != constants::invalid_uint64;
+            if (answer.kmer_id != constants::invalid_uint64) {
+                answer.kmer_weight = dict->weight(answer.kmer_id);
+            } else {
+                answer.kmer_weight = 0;
+            }
+            std::cout << answer.kmer_weight << " ";
         }
     }
     report.num_searches = query.num_searches();

@@ -11,11 +11,16 @@ namespace sshash {
 
 struct streaming_query_report {
     streaming_query_report()
-        : num_kmers(0), num_positive_kmers(0), num_searches(0), num_extensions(0) {}
+        : num_kmers(0)
+        , num_positive_kmers(0)
+        , num_searches(0)
+        , num_extensions(0)
+        , kmer_weight(constants::invalid_uint64) {}
     uint64_t num_kmers;
     uint64_t num_positive_kmers;
     uint64_t num_searches;
     uint64_t num_extensions;
+    uint64_t kmer_weight;
 };
 
 struct lookup_result {
