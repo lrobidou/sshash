@@ -11,16 +11,11 @@ namespace sshash {
 
 struct streaming_query_report {
     streaming_query_report()
-        : num_kmers(0)
-        , num_positive_kmers(0)
-        , num_searches(0)
-        , num_extensions(0)
-        , kmer_weight(constants::invalid_uint64) {}
+        : num_kmers(0), num_positive_kmers(0), num_searches(0), num_extensions(0) {}
     uint64_t num_kmers;
     uint64_t num_positive_kmers;
     uint64_t num_searches;
     uint64_t num_extensions;
-    uint64_t kmer_weight;
 };
 
 struct lookup_result {
@@ -29,12 +24,14 @@ struct lookup_result {
         , kmer_id_in_contig(constants::invalid_uint32)
         , kmer_orientation(constants::forward_orientation)
         , contig_id(constants::invalid_uint32)
-        , contig_size(constants::invalid_uint32) {}
+        , contig_size(constants::invalid_uint32)
+        , kmer_weight(constants::invalid_uint64) {}
     uint64_t kmer_id;            // "absolute" kmer-id
     uint32_t kmer_id_in_contig;  // "relative" kmer-id: 0 <= kmer_id_in_contig < contig_size
     uint32_t kmer_orientation;
     uint32_t contig_id;
     uint32_t contig_size;
+    uint64_t kmer_weight;
 };
 
 struct neighbourhood {
